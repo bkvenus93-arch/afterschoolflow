@@ -36,7 +36,6 @@ body {
 }
 .wrap { max-width: 1400px; margin: 0 auto; padding: 16px 20px 40px; }
 
-/* top bar */
 .top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .logo { font-family: var(--hand); font-weight: 700; font-size: 2rem; letter-spacing: .02em; margin: 0; display: flex; align-items: center; gap: 10px; }
 .logo .mark { font-size: 1.7rem; }
@@ -48,7 +47,6 @@ body {
 .search input:focus { border-bottom-color: var(--ink); }
 .search .ico { position: absolute; left: 4px; top: 5px; font-size: 1rem; }
 
-/* tab menu */
 .tabs { display: flex; flex-wrap: wrap; gap: 10px 8px; margin: 18px 0 0; padding: 0 4px; position: relative; z-index: 2; }
 .tab {
   font-family: var(--hand); font-weight: 700; font-size: 1.1rem; color: var(--ink);
@@ -69,7 +67,6 @@ body {
 .tab.on { background: var(--ink); color: #fff; transform: rotate(0); }
 .tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-/* card */
 .card {
   position: relative; background: var(--card); border-radius: 6px; margin-top: -8px;
   padding: 44px 32px 32px; box-shadow: 0 1px 3px rgba(60,50,30,.15);
@@ -86,98 +83,4 @@ body {
 .ttl h2 span { background: linear-gradient(transparent 62%, #ece0a0 62%); padding: 0 4px; }
 .pager { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .pager .cnt { letter-spacing: .15em; color: var(--muted); font-size: .95rem; }
-.pager button {
-  width: 42px; height: 42px; border: 1px solid var(--line); background: #fff; border-radius: 6px;
-  cursor: pointer; font-size: 1.2rem; color: var(--ink);
-}
-.pager button:disabled { opacity: .35; cursor: default; }
-.hint { color: var(--muted); font-size: .92rem; margin: 14px 0 6px; }
-
-/* flow table */
-table.flow { width: 100%; border-collapse: separate; border-spacing: 8px 10px; table-layout: fixed; margin: 6px -8px 0; width: calc(100% + 16px); }
-table.flow th {
-  font-family: var(--hand); font-size: 1.25rem; font-weight: 700; padding: 8px 10px; border-radius: 4px; text-align: center;
-}
-table.flow th.c-p { width: 11%; background: var(--lav); }
-table.flow th.c-m { background: var(--pink); }
-table.flow th.c-s { background: var(--blue); }
-table.flow th.c-v { background: var(--yellow); }
-table.flow td { vertical-align: top; padding: 0; }
-table.flow td.p, table.flow td.has { padding: 10px 12px; border-radius: 4px; }
-table.flow td.p { background: var(--lav); font-family: var(--hand); font-weight: 700; font-size: 1.1rem; text-align: center; word-break: keep-all; }
-table.flow td.m.has { background: var(--pink); }
-table.flow td.s.has { background: var(--blue); }
-table.flow td.v.has { background: var(--yellow); }
-table.flow td.empty { background: none; border: 0; }
-table.flow ul { list-style: none; margin: 0; padding: 0; }
-table.flow li { padding: 3px 0 3px 14px; position: relative; word-break: keep-all; font-size: .95rem; }
-table.flow li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
-table.flow li + li { border-top: 1px dashed rgba(0,0,0,.1); }
-mark { background: #f6e27a; color: inherit; padding: 0 1px; border-radius: 2px; }
-
-/* link page */
-.links { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 14px 0 4px; }
-.links a {
-  display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center;
-  min-height: 92px; padding: 12px; border-radius: 4px; text-decoration: none; color: var(--ink);
-  font-family: var(--hand); font-weight: 700; font-size: 1.3rem; line-height: 1.25; word-break: keep-all;
-  box-shadow: 0 1px 2px rgba(60,50,30,.18); transition: transform .12s;
-}
-.links a:nth-child(4n+1) { background: var(--pink); }
-.links a:nth-child(4n+2) { background: var(--blue); }
-.links a:nth-child(4n+3) { background: var(--yellow); }
-.links a:nth-child(4n+4) { background: var(--green); }
-.links a:hover { transform: translateY(-3px) rotate(-.6deg); }
-.links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.links .lock { font-size: 1.05rem; }
-
-/* search results */
-.res-sec { margin-top: 22px; }
-.res-sec h3 { font-family: var(--hand); font-size: 1.5rem; margin: 0 0 4px; }
-.res-sec h3 button { font: inherit; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 0; text-align: left; }
-.res-sec h3 button:hover { text-decoration: underline; }
-.empty-msg { text-align: center; color: var(--muted); font-family: var(--hand); font-size: 1.3rem; padding: 48px 0 24px; }
-
-@media (max-width: 1100px) { .links { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 760px) {
-  .wrap { padding: 12px 10px 30px; }
-  .logo { font-size: 1.6rem; }
-  .search { margin-left: 0; width: 100%; }
-  .tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; }
-  .card { padding: 36px 16px 22px; }
-  .big { font-size: 3.2rem; min-width: 0; }
-  .big.emoji { font-size: 2.8rem; }
-  .ttl h2 { font-size: 1.7rem; }
-  .pager { width: 100%; justify-content: flex-end; }
-  .links { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .links a { font-size: 1.1rem; min-height: 76px; }
-  table.flow, table.flow tbody, table.flow tr, table.flow td { display: block; width: 100%; margin: 0; }
-  table.flow { border-spacing: 0; }
-  table.flow thead { display: none; }
-  table.flow tr { border: 1px solid var(--line); border-radius: 6px; padding: 8px; margin-bottom: 12px; background: #fff; }
-  table.flow td.empty { display: none; }
-  table.flow td.p { text-align: left; margin-bottom: 6px; }
-  table.flow td.has { margin-bottom: 6px; }
-  table.flow td.has::before { content: attr(data-label); display: block; font-family: var(--hand); font-weight: 700; font-size: 1rem; margin-bottom: 2px; color: var(--muted); }
-}
-@media print {
-  body { background: #fff; }
-  .top, .tabs, .pager button, .hint { display: none; }
-  .card { box-shadow: none; margin: 0; padding: 0; }
-  .card::before { display: none; }
-  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  table.flow tr { break-inside: avoid; }
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="top">
-    <h1 class="logo"><span class="mark">📒</span><span>방맞돌 업무 흐름</span></h1>
-    <div class="search">
-      <span class="ico">🔍</span>
-      <input id="q" type="search" placeholder="업무 검색" aria-label="업무 검색" autocomplete="off">
-    </div>
-  </div>
-  <nav class="tabs" id="tabs" aria-label="분류 메뉴"></nav>
-  <main class="
+.pager
