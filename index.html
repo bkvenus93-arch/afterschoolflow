@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>방맞돌 업무 흐름</title>
+<title>방맞돌 업무 흐름도</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper: #e9e0cf;
@@ -25,8 +25,155 @@
   --serif: Georgia, 'Times New Roman', serif;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; }
-body {
+html, body { margin: 0; padding: 0; }
+
+/* ================= 1. 인트로(입장) 화면 스타일 ================= */
+#introView {
+  background: linear-gradient(180deg, #2A79D8 0%, #68B1F7 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jua', 'Malgun Gothic', sans-serif;
+  text-align: center;
+}
+
+.intro-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container {
+  margin-top: 20px;
+  width: 140px;
+  height: 140px;
+  background-color: white;
+  border-radius: 50%;
+  border: 4px solid #1a2a6c;
+  box-shadow: 0 0 0 6px #FBE34D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.avatar-container span {
+  font-size: 80px;
+  user-select: none;
+}
+
+.subtitle {
+  color: white;
+  font-size: 22px;
+  text-shadow: 
+    -2px -2px 0 #1a2a6c,  
+     2px -2px 0 #1a2a6c,
+    -2px  2px 0 #1a2a6c,
+     2px  2px 0 #1a2a6c;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 50px;
+  margin: 0 0 40px 0;
+  color: #FBE34D;
+  text-shadow: 
+    -3px -3px 0 #1a2a6c,  
+     3px -3px 0 #1a2a6c,
+    -3px  3px 0 #1a2a6c,
+     3px  3px 0 #1a2a6c,
+     0px  5px 0 #1a2a6c;
+  line-height: 1.2;
+}
+
+.title .white-text {
+  color: white;
+}
+
+.instruction {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: 'Malgun Gothic', sans-serif;
+  font-weight: 700;
+}
+
+.input-box {
+  width: 75%;
+  padding: 15px;
+  border-radius: 40px;
+  border: 4px solid #1a2a6c;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Malgun Gothic', sans-serif;
+  font-weight: bold;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+.input-box::placeholder {
+  color: #888;
+}
+
+.start-btn {
+  width: 83%;
+  padding: 18px;
+  border-radius: 40px;
+  background-color: #FBE34D;
+  border: 4px solid #1a2a6c;
+  color: #1a2a6c;
+  font-size: 20px;
+  font-family: 'Malgun Gothic', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1a2a6c;
+  margin-bottom: 20px;
+  transition: all 0.1s;
+}
+
+.start-btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 #1a2a6c;
+}
+
+/* 알림 메시지 토스트 */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: #1a2a6c;
+  color: #FBE34D;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-family: 'Malgun Gothic', sans-serif;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border: 2px solid #FBE34D;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================= 2. 메인 업무 흐름 화면 스타일 ================= */
+#mainView {
+  display: none;
   font-family: var(--body);
   color: var(--ink);
   background-color: var(--paper);
@@ -34,6 +181,7 @@ body {
   min-height: 100vh;
   line-height: 1.55;
 }
+
 .wrap { max-width: 1400px; margin: 0 auto; padding: 16px 20px 40px; }
 
 .top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -155,7 +303,8 @@ mark { background: #f6e27a; color: inherit; padding: 0 1px; border-radius: 2px; 
   table.flow td.has::before { content: attr(data-label); display: block; font-family: var(--hand); font-weight: 700; font-size: 1rem; margin-bottom: 2px; color: var(--muted); }
 }
 @media print {
-  body { background: #fff; }
+  #introView { display: none !important; }
+  #mainView { display: block !important; background: #fff; }
   .top, .tabs, .pager button, .hint { display: none; }
   .card { box-shadow: none; margin: 0; padding: 0; }
   .card::before { display: none; }
@@ -165,22 +314,93 @@ mark { background: #f6e27a; color: inherit; padding: 0 1px; border-radius: 2px; 
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top">
-    <h1 class="logo"><span class="mark">📒</span><span>방맞돌 업무 흐름</span></h1>
-    <div class="search">
-      <span class="ico">🔍</span>
-      <input id="q" type="search" placeholder="업무 검색" aria-label="업무 검색" autocomplete="off">
+
+<!-- 1. 입장 화면 -->
+<div id="introView">
+  <div class="intro-container">
+    <div class="avatar-container">
+      <span>🐹</span>
     </div>
+    
+    <div class="subtitle"><strong>오류남 방맞돌</strong>과 함께하는</div>
+    
+    <div class="title"><span class="white-text">업무</span> <strong>흐름도</strong></div>
+    
+    <div class="instruction">입장코드를 입력해 주세요</div>
+    
+    <input type="password" id="accessCode" class="input-box" placeholder="입장코드" autocomplete="off">
+    
+    <button id="startBtn" class="start-btn">▶ <strong>업무 흐름도 입장하기</strong></button>
   </div>
-  <nav class="tabs" id="tabs" aria-label="분류 메뉴"></nav>
-  <main class="card" id="card"></main>
 </div>
+
+<!-- 2. 메인 업무 흐름 화면 -->
+<div id="mainView">
+  <div class="wrap">
+    <div class="top">
+      <h1 class="logo"><span class="mark">📒</span><span>방맞돌 업무 흐름</span></h1>
+      <div class="search">
+        <span class="ico">🔍</span>
+        <input id="q" type="search" placeholder="업무 검색" aria-label="업무 검색" autocomplete="off">
+      </div>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="분류 메뉴"></nav>
+    <main class="card" id="card"></main>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
 
 <script>
 (function () {
   'use strict';
 
+  /* ===== 입장 화면 전환 로직 ===== */
+  var introView = document.getElementById('introView');
+  var mainView = document.getElementById('mainView');
+  var accessInput = document.getElementById('accessCode');
+  var startBtn = document.getElementById('startBtn');
+  var toast = document.getElementById('toast');
+  var isEntered = false;
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2200);
+  }
+
+  function enterWorkflow() {
+    var code = accessInput.value.trim();
+    if (!code) {
+      showToast('입장코드를 입력해 주세요!');
+      accessInput.focus();
+      return;
+    }
+    if (code !== '1234') {
+      showToast('입장코드가 올바르지 않습니다.');
+      accessInput.value = '';
+      accessInput.focus();
+      return;
+    }
+    isEntered = true;
+    introView.style.display = 'none';
+    mainView.style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  startBtn.addEventListener('click', function () {
+    enterWorkflow();
+  });
+
+  accessInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      enterWorkflow();
+    }
+  });
+
+  /* ===== 메인 업무 흐름 데이터 및 렌더링 로직 ===== */
   var LINKS = [
     { name: '온교무실_방맞돌', lock: false, url: 'https://docs.google.com/spreadsheets/d/1_G-Xz1fND9J5U3RjwRoXEbJmF9EEEbjF7sW2bUQVtq0/edit?gid=141028377#gid=141028377' },
     { name: '업무일정_방맞돌', lock: false, url: 'https://docs.google.com/spreadsheets/d/1NyZb-hoD-M3yOovtkqDesp_DEUHA5V396MTUoB9KJPc/edit?gid=1788763132#gid=1788763132' },
@@ -424,7 +644,7 @@ mark { background: #f6e27a; color: inherit; padding: 0 1px; border-radius: 2px; 
     if (e.key === 'Escape') { qEl.value = ''; renderPage(); qEl.blur(); }
   });
   document.addEventListener('keydown', function (e) {
-    if (e.target === qEl || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (!isEntered || e.target === qEl || e.target === accessInput || e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'ArrowLeft') go(cur - 1);
     if (e.key === 'ArrowRight') go(cur + 1);
   });
